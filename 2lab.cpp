@@ -109,7 +109,7 @@ int main()
 
   std::regex reg2("(\"[\\w || \\s]*\")");
 
-  PrintMatches(reg2, "myfile.txt");
-  //PrintArrays();
+  // PrintMatches(reg2, "myfile.txt");
+  PrintArrays();
   return 0;
 }
