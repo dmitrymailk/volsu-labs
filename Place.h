@@ -52,7 +52,7 @@ public:
     cout << "show\n";
   }
   ~Place() {}
-
+  Place() {}
   Place(const Place &p)
   {
     count_people = p.count_people;
