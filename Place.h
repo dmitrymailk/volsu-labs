@@ -52,4 +52,11 @@ public:
     cout << "show\n";
   }
   ~Place() {}
+
+  Place(const Place &p)
+  {
+    count_people = p.count_people;
+    gravitation = p.gravitation;
+    planet = p.planet;
+  }
 };
