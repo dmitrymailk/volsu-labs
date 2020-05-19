@@ -51,4 +51,5 @@ public:
   {
     cout << "show\n";
   }
+  ~Place() {}
 };
