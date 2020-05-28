@@ -1,0 +1,11 @@
+{
+  "files.associations": {
+    "*.hbs": "handlebars",
+    "xstring": "cpp",
+    "string": "cpp",
+    "iosfwd": "cpp",
+    "vector": "cpp",
+    "iostream": "cpp",
+    "fstream": "cpp"
+  }
+}
