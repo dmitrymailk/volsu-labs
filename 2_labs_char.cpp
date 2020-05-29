@@ -1,107 +1,119 @@
 #include <iostream>
 #include <string>
+#include <cstring>
 #include <vector>
 #include <fstream>
+#include <stdio.h>
+
 using namespace std;
 
-string *sent_tokinazer(string text)
+char *substr(const char *src, int m, int n)
 {
-  string ends_of_sent = ".!?";
-  string *sents = new string[10000];
-  int last_pos = 0;
-  int start = 0;
-  for (int i = 0; i < text.size(); i++)
+  int len = n - m;
+  char *dest = (char *)malloc(sizeof(char) * (len + 1));
+  for (int i = m; i < n && (*(src + i) != '\0'); i++)
   {
-    for (int j = 0; j < ends_of_sent.size(); j++)
-    {
-      if (text[i] == ends_of_sent[j])
-      {
-        if (start > 0)
-          start++;
-
-        string sub_str = text.substr(start, i - start + 1);
-        sents[last_pos] = sub_str;
-        last_pos += 1;
-        // sents.push_back(sub_str);
-        start = i + 1;
-      }
-    }
+    *dest = *(src + i);
+    dest++;
   }
+  *dest = '\0';
+  return dest - len;
+}
 
-  return sents;
+void sent_tokinazer(char **sents, char *text)
+{
+  const char *ends = ".!?";
+
+  int i = 0;
+  int pos_sent = 0;
+  int num_len = 0;
+  int start = 0;
+
+  while (text[i] != '\0')
+  {
+    if (text[i] == ends[0] || text[i] == ends[1] || text[i] == ends[2])
+    {
+      char *dest = substr(text, start, i);
+      start = i + 2;
+      sents[pos_sent] = dest;
+      pos_sent += 1;
+    }
+    i++;
+  }
+}
+
+int sent_tokinazer_len(char *text)
+{
+  const char *ends = ".!?";
+  int count = 0;
+  int i = 0;
+  while (text[i] != '\0')
+  {
+    if (text[i] == ends[0] || text[i] == ends[1] || text[i] == ends[2])
+      count++;
+    i += 1;
+  }
+  return count;
 };
 
-int sent_tokinazer_len(string text)
-{
-  string ends_of_sent = ".!?";
-  int last_pos = 0;
-  int start = 0;
-  for (int i = 0; i < text.size(); i++)
-  {
-    for (int j = 0; j < ends_of_sent.size(); j++)
-    {
-      if (text[i] == ends_of_sent[j])
-      {
-        if (start > 0)
-          start++;
-
-        string sub_str = text.substr(start, i - start + 1);
-        // sents[last_pos] = sub_str;
-        last_pos += 1;
-        // sents.push_back(sub_str);
-        start = i + 1;
-      }
-    }
-  }
-
-  return last_pos;
-};
-
-int length_words(string sent)
+int length_words(char *sent)
 {
   int count_spaces = 1;
 
-  for (int i = 0; i < sent.size(); i++)
+  for (int i = 0; i < strlen(sent); i++)
     if (sent[i] == ' ')
       count_spaces++;
-  // cout << count_spaces << "\n";
   return count_spaces;
 }
 
-void sents_segregation(string sents[], int counts, int count_sents)
+void sents_segregation(char **sents, int counts, int count_sents)
 {
   for (int i = 0; i < count_sents; i++)
   {
     if (length_words(sents[i]) == counts)
-      cout << *(sents + i) << "\n";
+      cout << sents[i] << "\n";
   }
 };
 
-string text_from_file(string filename)
+void text_from_file(char *_text, const char *filename)
 {
-  string text = "";
-
-  ifstream baseFile(filename);
-  if (!baseFile)
+  int c;
+  FILE *file;
+  file = fopen(filename, "r");
+  int pos = 0;
+  if (file)
   {
-    cerr << "Unable to open file " << filename;
-    exit(1);
+    while ((c = getc(file)) != EOF)
+    {
+      _text[pos] = c;
+      pos += 1;
+    }
+    fclose(file);
   }
-  string line;
-  while (getline(baseFile, line))
-    text += line;
-
-  return text;
 }
 
-void MainTask(string filename = "some_text.txt")
+void MainTask()
 {
-  string text = text_from_file(filename);
-  int sents_len = sent_tokinazer_len(text);
-  string *sents = sent_tokinazer(text);
+  int max_characters = 10000;
+  char text[max_characters];
+  const char filename[] = "some_text.txt";
 
+  // get text from txt file
+  text_from_file(text, filename);
+
+  int sents_len = sent_tokinazer_len(text);
+  char **sents = (char **)malloc(sizeof(char *) * sents_len * max_characters);
+
+  // get sentences from text
+  sent_tokinazer(sents, text);
+
+  // print sentences which contain 3 words
   int condition_of_words = 3;
   sents_segregation(sents, condition_of_words, sents_len);
+
+  // free memory
+  for (int i = 0; i < sents_len; i++)
+    delete &sents[i];
 }
 
 int main()
