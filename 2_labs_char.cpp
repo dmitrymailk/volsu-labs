@@ -1,9 +1,6 @@
 #include <iostream>
-#include <string>
 #include <cstring>
-#include <vector>
 #include <fstream>
-#include <stdio.h>
 
 using namespace std;
 
