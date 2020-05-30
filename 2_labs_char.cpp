@@ -102,17 +102,17 @@ void MainTask()
   const char filename[] = "some_text.txt";
 
   // get text from txt file
-  text_from_file(text, filename);
+  text_from_file(text, filename); // ru получает текст из файла в переменную text
 
-  int sents_len = sent_tokinazer_len(text);
-  char **sents = (char **)malloc(sizeof(char *) * sents_len * max_characters);
+  int sents_len = sent_tokinazer_len(text); // ru получает количество предложений в тексте
+  char **sents = (char **)malloc(sizeof(char *) * sents_len * max_characters); // ru выделяется память под массив предложений
 
   // get sentences from text
-  sent_tokinazer(sents, text);
+  sent_tokinazer(sents, text); // ru разделение текста на предложения
 
   // print sentences which contain 3 words
   int condition_of_words = 3;
-  sents_segregation(sents, condition_of_words, sents_len);
+  sents_segregation(sents, condition_of_words, sents_len); // ru вывод только тех предложений которые удовлетворяют условию
 
   // free memory
   for (int i = 0; i < sents_len; i++)
