@@ -4,6 +4,7 @@
 
 using namespace std;
 
+// get pointer from text to substring 
 char *substr(const char *src, int m, int n)
 {
   int len = n - m;
@@ -17,6 +18,7 @@ char *substr(const char *src, int m, int n)
   return dest - len;
 }
 
+// split sentenses by .!?
 void sent_tokinazer(char **sents, char *text)
 {
   const char *ends = ".!?";
@@ -39,6 +41,7 @@ void sent_tokinazer(char **sents, char *text)
   }
 }
 
+// count sentences in the text
 int sent_tokinazer_len(char *text)
 {
   const char *ends = ".!?";
@@ -53,6 +56,7 @@ int sent_tokinazer_len(char *text)
   return count;
 };
 
+// count words in sentence
 int length_words(char *sent)
 {
   int count_spaces = 1;
@@ -63,6 +67,7 @@ int length_words(char *sent)
   return count_spaces;
 }
 
+// print sentences by condition 
 void sents_segregation(char **sents, int counts, int count_sents)
 {
   for (int i = 0; i < count_sents; i++)
@@ -72,6 +77,7 @@ void sents_segregation(char **sents, int counts, int count_sents)
   }
 };
 
+// read text from file
 void text_from_file(char *_text, const char *filename)
 {
   int c;
