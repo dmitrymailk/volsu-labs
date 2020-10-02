@@ -66,6 +66,18 @@ public:
       head = temp;
     }
   }
+  linked_list(const linked_list &list)
+  {
+    head = list.head;
+    tail = list.tail;
+  }
+
+  linked_list operator=(const linked_list &l)
+  {
+    // head = l.head;
+    // tail = l.tail;
+    return *this;
+  }
 
   void add_node(char const *data)
   {
@@ -95,7 +107,6 @@ public:
     }
 
     cout << tmp->data << "\n";
-    tmp = tmp->next;
   }
 
   void replace_all_words(char const *initial_word, char const *replace_word)
@@ -124,5 +135,6 @@ public:
       temp = temp->next;
     }
     temp->next = NULL;
+    tail = temp;
   }
 };

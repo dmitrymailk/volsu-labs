@@ -14,7 +14,7 @@
 // Построить класс для работы с односвязным списком. Элементы списка – слова
 // (массив символов). Создать список, содержащий некоторую последовательность слов.
 // Заменить в списке каждое вхождение заданного слова другим (также заданным).
-#include "year3__lab_1_1/linked_list.cpp"
+#include "lab_files/linked_list.cpp"
 
 int main()
 {
@@ -24,11 +24,17 @@ int main()
   a.add_node("qwe 3");
   a.add_node("qwe 4");
 
-  a.show_all();
+  // a.show_all();
   a.replace_all_words("qwe", "aaaaaaaaaaa");
-  a.show_all();
+  // a.show_all();
   a.pop();
-  a.show_all();
+  // a.show_all();
+  // cout << "\nB\n";
+  linked_list b = a;
+  b.show_all();
+  linked_list c(a);
+  c.show_all();
+  // a.show_all();
 
   return 0;
 }
