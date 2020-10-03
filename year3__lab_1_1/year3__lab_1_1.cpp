@@ -25,16 +25,16 @@ int main()
   a.add_node("qwe 4");
 
   // a.show_all();
-  a.replace_all_words("qwe", "aaaaaaaaaaa");
-  // a.show_all();
-  a.pop();
+  // a.replace_all_words("qwe", "aaaaaaaaaaa");
+  // // a.show_all();
+  // a.pop();
   // a.show_all();
   // cout << "\nB\n";
-  linked_list b = a;
+  linked_list b;
+  b = a;
   b.show_all();
-  linked_list c(a);
-  c.show_all();
-  // a.show_all();
+  // linked_list c(a);
+  // c.show_all();
 
   return 0;
 }

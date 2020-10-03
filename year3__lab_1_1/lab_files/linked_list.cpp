@@ -72,10 +72,10 @@ public:
     tail = list.tail;
   }
 
-  linked_list operator=(const linked_list &l)
+  linked_list &operator=(const linked_list &l)
   {
-    // head = l.head;
-    // tail = l.tail;
+    head = l.head;
+    tail = l.tail;
     return *this;
   }
 

@@ -11,7 +11,7 @@ private:
 
 public:
   vector();
-  vector<T> operator=(const vector<T> &v)
+  vector<T> &operator=(const vector<T> &v)
   {
     delete[] buffer;
     size = v.size;

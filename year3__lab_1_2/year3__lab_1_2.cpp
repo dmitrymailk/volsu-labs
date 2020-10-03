@@ -16,6 +16,7 @@ int main()
   vec2.show_all();
   vec2.pop();
   vec2.show_all();
-  vector<int> copy_vec = vec;
+  vector<int> copy_vec;
+  copy_vec = vec;
   copy_vec.show_all();
 }
