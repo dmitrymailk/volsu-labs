@@ -145,18 +145,6 @@ public:
     // tail = l.tail;
     return *this;
   }
-  linked_list operator=(linked_list &l)
-  {
-    // head = l.head;
-    // tail = l.tail;
-    return *this;
-  }
-  linked_list operator=(linked_list *l)
-  {
-    // head = l.head;
-    // tail = l.tail;
-    return *this;
-  }
 
   linked_list &operator+=(const linked_list &l)
   {
@@ -173,6 +161,19 @@ public:
 
   node *operator++(int)
   {
+    cout << currentNode->data << "\n";
+    cout << currentNode->next->data << "\n";
+    cout << currentNode->next->next->data << "\n";
+    try
+    {
+      if ((currentNode->next)->next == NULL)
+        throw("Something Wrong");
+    }
+    catch (const char *message)
+    {
+      cout << message << "\n";
+      return 0;
+    }
     return currentNode;
   }
 
@@ -188,27 +189,5 @@ public:
   bool operator!=(const linked_list &a)
   {
     return currentNode->data != a.currentNode->data;
-  }
-  linked_list *operator+(const linked_list &l)
-  {
-    linked_list tempCopy;
-    node *tmp = head;
-    while (tmp != tail)
-    {
-      tempCopy.add_node(tmp->data);
-      tmp = tmp->next;
-    }
-    tempCopy.add_node(tmp->data);
-    // tempCopy.head = head;
-    // tempCopy.tail = tail;
-    cout << " CREAted\n";
-    cout << tempCopy.currentNode->data << " CREAted\n";
-
-    tempCopy.tail->next = l.head;
-    tempCopy.tail = l.tail;
-    tempCopy.currentNode = l.tail;
-    cout << tempCopy.currentNode->data << " copied\n";
-
-    return &tempCopy;
   }
 };
