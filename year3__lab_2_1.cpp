@@ -18,12 +18,13 @@ int main()
   linked_list a_2;
   a_2.add_node("asd");
   a_2.add_node("asd 2");
-  a_2.add_node("asd 3");
+  a_2.add_node("asd 5");
   a_2.show_all();
 
   a += a_2;
 
   a.show_all();
+  a_2.add_node("asd 12312");
 
   // a.replace_all_words("qwe", "aaaaaaaaaaa");
   // // a.show_all();
@@ -36,6 +37,13 @@ int main()
   // c.show_all();
   // a.show_all();
   cout << (*a).data << "\n";
-
+  cout << (a++)->data << "\n";
+  cout << (a == a) << "\n";
+  cout << (a == a_2) << "\n";
+  cout << (a != a) << "\n";
+  cout << (a != a_2) << "\n";
+  // linked_list a_3;
+  // a_3 = a + a_2;
+  cout << "as\n";
   return 0;
 }

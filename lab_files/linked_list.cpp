@@ -51,10 +51,13 @@ private:
   node *head, *tail;
 
 public:
+  node *currentNode;
+
   linked_list()
   {
     head = NULL;
     tail = NULL;
+    currentNode = tail;
   }
   ~linked_list()
   {
@@ -70,6 +73,7 @@ public:
   {
     head = list.head;
     tail = list.tail;
+    currentNode = tail;
   }
 
   void add_node(char const *data)
@@ -81,12 +85,14 @@ public:
     if (head == NULL)
     {
       head = tmp;
+      currentNode = tmp;
       tail = tmp;
     }
     else
     {
       tail->next = tmp;
       tail = tail->next;
+      currentNode = tail;
     }
   }
 
@@ -130,9 +136,16 @@ public:
     }
     temp->next = NULL;
     tail = temp;
+    currentNode = tail;
   }
 
   linked_list operator=(const linked_list &l)
+  {
+    // head = l.head;
+    // tail = l.tail;
+    return *this;
+  }
+  linked_list operator=(linked_list &l)
   {
     // head = l.head;
     // tail = l.tail;
@@ -143,6 +156,7 @@ public:
   {
     tail->next = l.head;
     tail = l.tail;
+    currentNode = tail;
     return *this;
   }
 
@@ -151,8 +165,41 @@ public:
     this->add_node(data);
   }
 
+  node *operator++(int)
+  {
+    return currentNode;
+  }
+
   node operator*()
   {
-    return *tail;
+    return *currentNode;
+  }
+
+  bool operator==(const linked_list &a)
+  {
+    return currentNode->data == a.currentNode->data;
+  }
+  bool operator!=(const linked_list &a)
+  {
+    return currentNode->data != a.currentNode->data;
+  }
+  linked_list operator+(const linked_list &l)
+  {
+    linked_list tempCopy;
+    node *tmp = head;
+    while (tmp != tail)
+    {
+      tempCopy.add_node(tmp->data);
+      tmp = tmp->next;
+    }
+    // tempCopy.head = head;
+    // tempCopy.tail = tail;
+    cout << " CREAted\n";
+    // cout << tempCopy.currentNode->data << " CREAted\n";
+
+    tempCopy.tail->next = l.head;
+    tempCopy.tail = l.tail;
+    tempCopy.currentNode = l.tail;
+    return tempCopy;
   }
 };
