@@ -57,7 +57,7 @@ public:
   {
     head = NULL;
     tail = NULL;
-    currentNode = tail;
+    currentNode = head;
   }
   ~linked_list()
   {
@@ -85,14 +85,13 @@ public:
     if (head == NULL)
     {
       head = tmp;
-      currentNode = tmp;
+      currentNode = head;
       tail = tmp;
     }
     else
     {
       tail->next = tmp;
       tail = tail->next;
-      currentNode = tail;
     }
   }
 
@@ -136,7 +135,6 @@ public:
     }
     temp->next = NULL;
     tail = temp;
-    currentNode = tail;
   }
 
   linked_list operator=(const linked_list &l)
@@ -148,9 +146,17 @@ public:
 
   linked_list &operator+=(const linked_list &l)
   {
-    tail->next = l.head;
-    tail = l.tail;
-    currentNode = tail;
+
+    node *tmp = l.head;
+    while (tmp != l.tail)
+    {
+      // cout << tmp->data << "\n";
+      this->add_node(tmp->data);
+      tmp = tmp->next;
+    }
+
+    this->add_node(tmp->data);
+
     return *this;
   }
 
@@ -161,13 +167,14 @@ public:
 
   node *operator++(int)
   {
-    cout << currentNode->data << "\n";
-    cout << currentNode->next->data << "\n";
-    cout << currentNode->next->next->data << "\n";
     try
     {
-      if ((currentNode->next)->next == NULL)
+      if ((currentNode->next) == NULL)
         throw("Something Wrong");
+      else
+      {
+        currentNode = currentNode->next;
+      }
     }
     catch (const char *message)
     {
@@ -179,15 +186,41 @@ public:
 
   node operator*()
   {
-    return *currentNode;
+    return *tail;
+  }
+
+  node operator+(const linked_list &l)
+  {
+
+    linked_list main_temp;
+    node *tmp = head;
+    // copy this list
+    while (tmp != tail)
+    {
+      main_temp.add_node(tmp->data);
+      tmp = tmp->next;
+    }
+    main_temp.add_node(tmp->data);
+
+    // start copy second list
+    tmp = l.head;
+    while (tmp != l.tail)
+    {
+      main_temp.add_node(tmp->data);
+      tmp = tmp->next;
+    }
+
+    main_temp.add_node(tmp->data);
+
+    return *main_temp;
   }
 
   bool operator==(const linked_list &a)
   {
-    return currentNode->data == a.currentNode->data;
+    return tail->data == a.tail->data;
   }
   bool operator!=(const linked_list &a)
   {
-    return currentNode->data != a.currentNode->data;
+    return tail->data != a.tail->data;
   }
 };

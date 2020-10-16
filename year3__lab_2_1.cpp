@@ -25,10 +25,10 @@ int main()
 
   a.show_all();
   a_2.add_node("asd 12312");
-  a_2.add_node("asd 457456");
+  a_2.add_node("LAST ITEM SECOND LIST");
 
   // a.replace_all_words("qwe", "aaaaaaaaaaa");
-  // // a.show_all();
+  // a.show_all();
   // a.pop();
   // // a.show_all();
   // // cout << "\nB\n";
@@ -37,12 +37,20 @@ int main()
   // linked_list c(a);
   // c.show_all();
   // a.show_all();
-  cout << (*a).data << " a current\n";
-  cout << (a++)->data << " a current\n";
   cout << (a == a) << "\n";
   cout << (a == a_2) << "\n";
   cout << (a != a) << "\n";
   cout << (a != a_2) << "\n";
+  cout << (*a).data << " a current\n";
+  cout << (a++)->data << " current\n";
+  cout << (a++)->data << "  current\n";
+  cout << (a + a_2).data << "  -merge\n";
+  cout << (a++)->data << "  current\n";
+  cout << (a++)->data << "  current\n";
+  cout << (a++)->data << "  current\n";
+  cout << (a++)->data << "  current\n";
+  cout << (a++)->data << "  current\n";
+  cout << (a++)->data << "  current\n";
 
   return 0;
 }
