@@ -47,11 +47,11 @@ public:
 
   void task_2()
   {
-    auto min = min_element(container.begin(), container.end());
-    auto max = max_element(container.begin(), container.end());
+    vector<int>::iterator min = min_element(container.begin(), container.end());
+    vector<int>::iterator max = max_element(container.begin(), container.end());
 
-    int start = index(min);
-    int end = index(max);
+    int start = distance(container.begin(), min);
+    int end = distance(container.begin(), max);
 
     print_vec();
 
@@ -60,10 +60,6 @@ public:
     cout << "\n";
 
     print_vec();
-  }
-  int index(auto num)
-  {
-    return distance(container.begin(), num);
   }
 
   void print_vec()
