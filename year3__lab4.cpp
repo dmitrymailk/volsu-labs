@@ -18,7 +18,7 @@ public:
     len = _len;
     k = _k;
 
-    container = {23, 3, 2, 1, 4, 5, 6, 70, 8, 9};
+    container = {23, 3, 2, 1, 4, 5, 6, 70, 8, 9}; // для удобной проверки вывода
     task_1();
     task_2();
     task_3();
@@ -64,13 +64,11 @@ public:
     {
       for (int i = start; i <= end; i++)
         container[i] *= -1;
-      cout << "\n";
     }
     else
     {
       for (int i = end; i <= start; i++)
         container[i] *= -1;
-      cout << "\n";
     }
 
     print_vec();
@@ -95,9 +93,6 @@ public:
       vector<int> part_2(container.begin() + index_of_neg, container.begin() + index_of_neg + 1);
       vector<int> part_3(container.begin() + index_of_neg + 1, container.end());
       index_of_first_part = part_3.size() - 1;
-      // print_vec(part_1);
-      // print_vec(part_2);
-      // print_vec(part_3);
 
       container.clear();
       container.insert(container.end(), part_3.begin(), part_3.end());
