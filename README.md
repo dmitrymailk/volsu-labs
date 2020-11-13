@@ -22,3 +22,53 @@
    - (\*\* по желанию, дополнительно) для одного из модифицирующих алгоритмов написать
      свою функцию-предикат (например, с целью удаления всех нечетных элементов
      последовательности, ...).
+
+# Результат работы кода
+
+```
+ZzZzZz...
+we are here!
+I'm Player D
+I'm Player C
+I'm Player A
+I'm Player B
+I'm Player F
+
+sort by name
+I'm Player A
+I'm Player B
+I'm Player C
+I'm Player D
+I'm Player F
+
+reverse_group
+I'm Player F
+I'm Player D
+I'm Player C
+I'm Player B
+I'm Player A
+
+dance
+I'm Player B
+I'm Player A
+I'm Player D
+I'm Player F
+I'm Player C
+
+most rich
+Player F
+Amount of skillful students = 4
+send_down
+I'm Player A
+I'm Player D
+I'm Player F
+I'm Player C
+
+send_down
+I'm Player A
+I'm Player F
+I'm Player C
+
+Player F
+korona
+```

@@ -134,6 +134,7 @@ public:
 
   void send_down(programmer student)
   {
+    function_type("send_down");
     vector<programmer>::iterator pos = find_if(students.begin(), students.end(), [&student](programmer &coder) {
       return coder.say() == student.say();
     });
@@ -150,16 +151,19 @@ public:
 
   void reverse_group()
   {
+    function_type("reverse_group");
     reverse(students.begin(), students.end());
   }
 
   void koronavirus()
   {
+    function_type("korona");
     students.erase(students.begin(), students.end());
   }
 
   void sort_by_name()
   {
+    function_type("sort by name");
     sort(students.begin(), students.end(), [](programmer &coder_1, programmer &coder_2) {
       return (coder_1.say() < coder_2.say());
     });
@@ -167,6 +171,7 @@ public:
 
   programmer most_rich()
   {
+    function_type("most rich");
     vector<programmer>::iterator max = max_element(students.begin(),
                                                    students.end(),
                                                    [](programmer &coder_1, programmer &coder_2) {
@@ -177,6 +182,7 @@ public:
 
   void dance()
   {
+    function_type("dance");
     random_shuffle(students.begin(), students.end());
   }
 
@@ -185,6 +191,11 @@ public:
     return (int)count_if(students.begin(),
                          students.end(),
                          [](programmer &coder) { return coder.skill > 20; });
+  }
+
+  void function_type(string to_do)
+  {
+    cout << to_do << "\n";
   }
 
   programmer &
@@ -199,18 +210,22 @@ int main()
   srand(time(NULL));
 
   programmers_group mos_191;
+  mos_191.presence();
   mos_191.add_student("Player", "D");
   mos_191.add_student("Player", "C");
   mos_191.add_student("Player", "A");
   mos_191.add_student("Player", "B");
-  mos_191.add_student("Player", "G");
   mos_191.add_student("Player", "F");
+  mos_191.presence();
   mos_191.babbling();
 
   mos_191.sort_by_name();
   mos_191.babbling();
 
   mos_191.reverse_group();
+  mos_191.babbling();
+
+  mos_191.dance();
   mos_191.babbling();
 
   cout << mos_191.most_rich().say() << "\n";
