@@ -46,11 +46,13 @@ public:
   }
   void sleep()
   {
+    // пока программист спит он генерирует идеи
     ideas.push_back(generate_idea());
   }
 
   void repeat()
   {
+    // функция вызывается рекурсивно до тех пор пока возраст меньше 35
     years += 1;
     skill += 1;
     if (years < 35)
@@ -66,7 +68,9 @@ public:
 
   string generate_idea()
   {
-
+    // генерация идеи
+    //  если рандомно сгенерированное число 1 тогда мы увеличиваем skill на 2 и тд
+    // если 0 то увеличиваем skill на 10 и тд
     if (rand() % 2)
     {
       skill += 2;
@@ -87,6 +91,7 @@ public:
   }
 };
 
+// класс объединяющий класс programmer
 class programmers_group
 {
 private:
@@ -101,29 +106,42 @@ public:
     name = _name;
   }
 
+  // добавдение нового студента в конец группы
+  // если на вход поступает объект класса programmer
   void add_student(programmer student)
   {
     students.push_back(student);
   }
 
+  // создание добавление нового студента в конец группы
+  // если на вход поступает токько его имя и фамилия
   void add_student(string _name, string _surname)
   {
     students.push_back(programmer(_name, _surname));
   }
 
+  // функция которого ищет похожего студента
+  // у которого результат значения функции generate_idea() совпадают
+  // соответсвенно результат должен быть всегда разный
   programmer find_same(programmer student)
   {
     programmer temp_student;
 
-    for_each(students.begin(), students.end(), [&student, &temp_student](programmer &coder) {
-      if (student.generate_idea() == coder.generate_idea() && student.say() != coder.say())
-      {
-        temp_student = coder;
-      }
-    });
+    // перебор массива при помощи for_each
+    // пример https://www.geeksforgeeks.org/for_each-loop-c/
+    for_each(students.begin(), students.end(),
+             // используется lambda expression
+             // пример https://www.geeksforgeeks.org/lambda-expression-in-c/
+             [&student, &temp_student](programmer &coder) {
+               if (student.generate_idea() == coder.generate_idea() && student.say() != coder.say())
+               {
+                 temp_student = coder;
+               }
+             });
     return temp_student;
   }
 
+  // функция болтать, мы перебераем каждого студента и вызываем у него функцию say()
   void babbling()
   {
     for_each(students.begin(), students.end(), [](programmer &coder) {
@@ -132,6 +150,8 @@ public:
     cout << "\n";
   }
 
+  // функция отчисления студента
+  // на вход поступает сам студент и дальше ищется позиция в списке и удаляется
   void send_down(programmer student)
   {
     function_type("send_down");
@@ -141,6 +161,9 @@ public:
     students.erase(pos, pos + 1);
   }
 
+  // функция присутствия группы
+  // если в ней никого нет, тогда ZzZzZz
+  // иначе we are here
   void presence()
   {
     if (!students.empty())
@@ -149,18 +172,21 @@ public:
       cout << "ZzZzZz...\n";
   }
 
+  // разворачивает массив группы наборот
   void reverse_group()
   {
     function_type("reverse_group");
     reverse(students.begin(), students.end());
   }
 
+  // полностью удаляет студентов из списков группы (навсегда)
   void koronavirus()
   {
     function_type("korona");
     students.erase(students.begin(), students.end());
   }
 
+  // сортирует по имени список группы
   void sort_by_name()
   {
     function_type("sort by name");
@@ -169,6 +195,7 @@ public:
     });
   }
 
+  // находит в группе самого богатого по признаку money
   programmer most_rich()
   {
     function_type("most rich");
@@ -179,13 +206,14 @@ public:
                                                    });
     return *max;
   }
-
+  //  функция dance рандомно перемешивает список группы
   void dance()
   {
     function_type("dance");
     random_shuffle(students.begin(), students.end());
   }
 
+  // считает количество студентов чей скилл больше 20
   int count_skillful_students()
   {
     return (int)count_if(students.begin(),
@@ -198,6 +226,7 @@ public:
     cout << to_do << "\n";
   }
 
+  // чисто оператор для удобства
   programmer &
   operator[](int i)
   {
