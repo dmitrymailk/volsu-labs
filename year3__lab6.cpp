@@ -1,42 +1,76 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#include <string>
-#include <ctime>
-#include <cstdlib>
 #include <set>
+#include <algorithm>
+#include <iterator>
+#include <string>
 #include <map>
 using namespace std;
 
-int main()
-{
-  // TASK 1 ВАРИАНТ 1
-  vector<int> some_list = {1, 2, 3, 0, 4, 12, 3, 4, 1, 2, 3, 4};
-  set<int> some_list_part_1(some_list.begin(), some_list.begin() + some_list.size() / 2);
-  set<int> some_list_part_2(some_list.begin() + some_list.size() / 2, some_list.end());
+class lab_6 {
+ public:
+  vector<int> main_vec = {5, 1, 1, 2, 2, 2, 3, 3, 3, 3};
+  vector<string> words = {"SAY",      "IT",    "EXPLAIN", "YOURSELF", "GO",
+                          "ON",       "JUST",  "HANG",    "YOURSELF", "NO",
+                          "ONE",      "TAKES", "PRIDE",   "FOR",      "PAIN",
+                          "SAVE",     "YOUR",  "GAME",    "NO",       "ONE",
+                          "BELIEVES", "YOU",   "ANYWAY"};
 
-  if (includes(some_list_part_1.begin(),
-               some_list_part_1.end(),
-               some_list_part_2.begin(),
-               some_list_part_2.end()))
-    cout << "TRUE\n";
-  else
-    cout << "FALSE\n";
-
-  // TASK 2 ВАРИАНТ 1
-
-  vector<int> task_2 = {2, 2, 2, 2, 3, 3, 3, 4, 4, 66, 66, -3, 2, 1, 1, 1, 1, 1};
-  set<int> task_2_unique(task_2.begin(), task_2.end());
-  map<int, int> task_2_statistics;
-  for (auto num : task_2_unique)
-  {
-    int amount = count(task_2.begin(), task_2.end(), num);
-    task_2_statistics.insert(pair<int, int>(num, amount));
+  lab_6() {
+    cout << "\n";
+    // this->task_1();
+    this->task_2();
   }
 
-  for_each(task_2_statistics.begin(), task_2_statistics.end(), [](pair<int, int> item_1) {
-    cout << item_1.first << " => " << item_1.second << "\n";
-  });
+  void task_1() {
+    set<int> uniq_vec(this->main_vec.begin(), this->main_vec.end());
 
-  return 0;
+    if (uniq_vec.size() > 2) {
+      set<int>::reverse_iterator rev;
+      // prints all elements in reverse order
+      for (rev = next(uniq_vec.rbegin(), 1); rev != prev(uniq_vec.rend(), 1);
+           rev++)
+        cout << *rev << " ";
+    }
+  }
+
+  void task_2() {
+    map<char, vector<string>> same_endings;
+    set<char> all_ends;
+
+    // get all unique letters
+    for (auto item : words) {
+      char last_char = *(prev(item.end(), 1));
+      all_ends.insert(last_char);
+    }
+
+    // create pair letter => list of words
+    for (char item : all_ends) {
+      vector<string> temp_vec;
+      copy_if(words.begin(), words.end(), back_inserter(temp_vec),
+              [&item](string word) { return *prev(word.end(), 1) == item; });
+
+      same_endings.insert(pair<char, vector<string>>(item, temp_vec));
+    }
+
+    // print results
+    for_each(same_endings.begin(), same_endings.end(),
+             [](pair<char, vector<string>> item_1) {
+               cout << item_1.first << " => ";
+
+              //  for (auto word : item_1.second) cout << word << " ";
+              //  cout << "\n";
+
+              vector<string>::reverse_iterator rev;
+              // prints all elements in reverse order
+              for (rev = item_1.second.rbegin(); rev != item_1.second.rend();
+                  rev++)
+                cout << *rev << " ";
+              cout << "\n";
+             });
+  }
+};
+
+int main() { 
+  lab_6 _; 
 }
