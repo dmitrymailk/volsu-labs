@@ -5,6 +5,8 @@
 #include <QtWidgets>
 #include <QTableWidget>
 #include <QGroupBox>
+#include <QShortcut>
+#include <QKeySequence>
 
 // c++ modules
 #include <vector>
@@ -20,6 +22,8 @@ public:
 
     // functions
     void CreateTableWidget();
+    void CreateShortcuts();
+    void CreateConnects();
 
     // mytable
     QTableWidget *table_widget;
@@ -31,6 +35,10 @@ public:
     vector<vector<int>> input_data;
     vector<int> numbers_for_odd;
 
+    // shortcuts
+    QShortcut *CtrlA;
+    QShortcut *CtrlS;
+
     // utils functions
     static int random_generator(int, int);
     bool check_numbers_for_odd(int);
@@ -41,6 +49,7 @@ public:
 
     // labels
     QLabel *numbers_info;
+
 private slots:
     void FindSpecialNumbers();
     void ResetNumbers();

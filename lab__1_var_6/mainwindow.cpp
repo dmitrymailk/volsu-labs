@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include<QDebug>
 
 MainWindow::MainWindow(QWidget *parent, int _matrix_height, int _matrix_width, vector<int> odd_numbers) : QWidget(parent)
 {
@@ -13,9 +12,11 @@ MainWindow::MainWindow(QWidget *parent, int _matrix_height, int _matrix_width, v
     mainLayout->addWidget(verticalGroupBox);
     setLayout(mainLayout);
 
-    // add signals
-    connect(find_numbers_button, SIGNAL(clicked()), SLOT(FindSpecialNumbers()));
-    connect(reset_numbers_button, SIGNAL(clicked()), SLOT(ResetNumbers()));
+    // create shortcuts
+    CreateShortcuts();
+
+    // add connect
+    CreateConnects();
 
     // main window styles
     resize(600, 400);
@@ -99,6 +100,24 @@ void MainWindow::ResetNumbers(){
 
     for(int i=0; i<matrix_width; i++)
         table_widget->setColumnWidth(i, 20);
+}
+
+void MainWindow::CreateConnects(){
+    // connect buttons
+    connect(find_numbers_button, SIGNAL(clicked()), SLOT(FindSpecialNumbers()));
+    connect(reset_numbers_button, SIGNAL(clicked()), SLOT(ResetNumbers()));
+
+    // connect shortcuts
+    connect(CtrlA, SIGNAL(activated()), SLOT(FindSpecialNumbers()));
+    connect(CtrlS, SIGNAL(activated()), SLOT(ResetNumbers()));
+}
+
+void MainWindow::CreateShortcuts(){
+    // Ctrl+A
+    CtrlA = new QShortcut(QKeySequence(tr("Ctrl+A")), this);
+
+    // Ctrl+S
+    CtrlS = new QShortcut(QKeySequence(tr("Ctrl+S")), this);
 }
 
 bool MainWindow::check_numbers_for_odd(int number){
