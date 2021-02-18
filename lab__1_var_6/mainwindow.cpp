@@ -24,11 +24,13 @@ MainWindow::MainWindow(QWidget *parent, int _matrix_height, int _matrix_width, v
 
 
 void MainWindow::CreateTableWidget(){
-    verticalGroupBox = new QGroupBox(tr("Horizontal layout"));
+    verticalGroupBox = new QGroupBox(tr("Table numbers"));
     QVBoxLayout *layout = new QVBoxLayout;
 
     // create table widget
     table_widget = new QTableWidget(matrix_height, matrix_width, this);
+    table_widget->horizontalHeader()->hide();
+    table_widget->verticalHeader()->hide();
 
 
     for(int i=0; i<matrix_height; i++){
@@ -37,7 +39,10 @@ void MainWindow::CreateTableWidget(){
             int rand_num = random_generator(1, 50);
             temp.push_back(rand_num);
 
-            QTableWidgetItem *newItem = new QTableWidgetItem(tr("%1").arg(QString::number(random_generator(1, 100))));
+            QTableWidgetItem *newItem = new QTableWidgetItem(tr("%1").arg(QString::number(rand_num)));
+            // add hover event
+            newItem->setToolTip(tr("Item have value = %1").arg(rand_num));
+
             table_widget->setItem(i, j, newItem);
         }
         input_data.push_back(temp);
@@ -130,7 +135,7 @@ bool MainWindow::check_numbers_for_odd(int number){
     return is_colored;
 }
 
-int MainWindow::random_generator(int start = 1, int end = 100) {
+int MainWindow::random_generator(int start, int end) {
     std::random_device rd; // obtain a random number from hardware
     std::mt19937 gen(rd()); // seed the generator
     std::uniform_int_distribution<> distr(start, end); // define the range
