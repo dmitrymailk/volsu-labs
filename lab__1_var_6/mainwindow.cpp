@@ -77,6 +77,8 @@ void MainWindow::FindSpecialNumbers(){
                 QTableWidgetItem *item = table_widget->takeItem(i, j);
 
                 item->setBackground(QBrush(QColor(99, 209, 180)));
+                // add hover event
+                item->setToolTip(tr("Item have value = %1").arg(number_item));
                 table_widget->setItem(i, j, item);
 
                 ammount += 1;
@@ -97,7 +99,8 @@ void MainWindow::ResetNumbers(){
             int rand_num = random_generator(1, 50);
             temp.push_back(rand_num);
 
-            QTableWidgetItem *newItem = new QTableWidgetItem(tr("%1").arg(QString::number(random_generator(1, 100))));
+            QTableWidgetItem *newItem = new QTableWidgetItem(tr("%1").arg(QString::number(rand_num)));
+            newItem->setToolTip(tr("Item have value = %1").arg(rand_num));
             table_widget->setItem(i, j, newItem);
         }
         input_data.push_back(temp);
