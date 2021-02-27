@@ -8,7 +8,7 @@
 #include <QtWidgets>
 
 // debug
-#include <QTextStream>
+//#include <QTextStream>
 
 
 //! [0]

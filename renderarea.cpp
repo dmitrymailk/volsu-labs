@@ -69,8 +69,8 @@ RenderArea::RenderArea(QWidget *parent)
     int max_x = 200;
     int max_y = 80;
 
-    int x = random_generator(min_x, max_x);
-    int y = random_generator(min_y, max_y);
+    int x;// = random_generator(min_x, max_x);
+    int y;// = random_generator(min_y, max_y);
     for (int i = 0; i < 3; i++) {
             x = random_generator(min_x, max_x);
             y = random_generator(min_y, max_y);
@@ -109,11 +109,11 @@ void RenderArea::setShape(Shape shape)
 //! [3]
 
 //! [4]
-//void RenderArea::setPen(const QPen &pen)
-//{
-//    this->pen = pen;
-//    update();
-//}
+void RenderArea::setPen(const QPen &pen)
+{
+    this->pen = pen;
+    update();
+}
 //! [4]
 
 //! [5]

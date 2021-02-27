@@ -81,6 +81,7 @@ public slots:
     void setBrush(const QBrush &brush);
     void setBrush(QBrush &brush);
     void setAntialiased(bool antialiased);
+    void setPen(const QPen &pen);
     void setImage();
     void saveImage();
 
