@@ -10,7 +10,6 @@
 // debug
 //#include <QTextStream>
 
-
 //! [0]
 const int IdRole = Qt::UserRole;
 //QTextStream out(stdout);r
@@ -44,6 +43,7 @@ Window::Window()
             this, &Window::shapeChanged);
     connect(penWidthComboBox, &QComboBox::activated,
             this, &Window::colorChanged);
+
     connect(antialiasingCheckBox, &QAbstractButton::toggled,
             renderArea, &RenderArea::setAntialiased);
     connect(addImageFileButton, &QPushButton::clicked,
@@ -51,7 +51,7 @@ Window::Window()
     connect(saveImageFileButton, &QPushButton::clicked,
             renderArea, &RenderArea::saveImage);
 
-    QLabel *labelRender= new QLabel(tr("Draw Area"));
+    QLabel *labelRender = new QLabel(tr("Draw Area"));
 
     QGridLayout *mainLayout = new QGridLayout;
 
@@ -84,7 +84,7 @@ void Window::colorChanged()
 void Window::shapeChanged()
 {
     RenderArea::Shape shape = RenderArea::Shape(shapeComboBox->itemData(
-            shapeComboBox->currentIndex(), IdRole).toInt());
+                                                                 shapeComboBox->currentIndex(), IdRole)
+                                                    .toInt());
     renderArea->setShape(shape);
 }
-
