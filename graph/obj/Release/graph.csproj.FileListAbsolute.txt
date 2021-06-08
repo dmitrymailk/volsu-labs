@@ -1,0 +1,10 @@
+C:\Users\dmitry\Documents\Volsu\C\4year\lab__8\lab__8_4\graph\graph\bin\Release\graph.exe.config
+C:\Users\dmitry\Documents\Volsu\C\4year\lab__8\lab__8_4\graph\graph\bin\Release\graph.exe
+C:\Users\dmitry\Documents\Volsu\C\4year\lab__8\lab__8_4\graph\graph\bin\Release\graph.pdb
+C:\Users\dmitry\Documents\Volsu\C\4year\lab__8\lab__8_4\graph\graph\obj\Release\graph.Form1.resources
+C:\Users\dmitry\Documents\Volsu\C\4year\lab__8\lab__8_4\graph\graph\obj\Release\graph.Properties.Resources.resources
+C:\Users\dmitry\Documents\Volsu\C\4year\lab__8\lab__8_4\graph\graph\obj\Release\graph.csproj.GenerateResource.cache
+C:\Users\dmitry\Documents\Volsu\C\4year\lab__8\lab__8_4\graph\graph\obj\Release\graph.exe
+C:\Users\dmitry\Documents\Volsu\C\4year\lab__8\lab__8_4\graph\graph\obj\Release\graph.pdb
+C:\Users\dmitry\Documents\Volsu\C\4year\lab__8\lab__8_4\graph\graph\obj\Release\graph.csprojAssemblyReference.cache
+C:\Users\dmitry\Documents\Volsu\C\4year\lab__8\lab__8_4\graph\graph\obj\Release\graph.Form2.resources

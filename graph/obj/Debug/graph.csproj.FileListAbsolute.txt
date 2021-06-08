@@ -1,0 +1,9 @@
+C:\Users\dmitry\Documents\Volsu\C\4year\lab__8\lab__8_4\graph\graph\bin\Debug\graph.exe.config
+C:\Users\dmitry\Documents\Volsu\C\4year\lab__8\lab__8_4\graph\graph\bin\Debug\graph.exe
+C:\Users\dmitry\Documents\Volsu\C\4year\lab__8\lab__8_4\graph\graph\bin\Debug\graph.pdb
+C:\Users\dmitry\Documents\Volsu\C\4year\lab__8\lab__8_4\graph\graph\obj\Debug\graph.csprojAssemblyReference.cache
+C:\Users\dmitry\Documents\Volsu\C\4year\lab__8\lab__8_4\graph\graph\obj\Debug\graph.Form1.resources
+C:\Users\dmitry\Documents\Volsu\C\4year\lab__8\lab__8_4\graph\graph\obj\Debug\graph.Properties.Resources.resources
+C:\Users\dmitry\Documents\Volsu\C\4year\lab__8\lab__8_4\graph\graph\obj\Debug\graph.csproj.GenerateResource.cache
+C:\Users\dmitry\Documents\Volsu\C\4year\lab__8\lab__8_4\graph\graph\obj\Debug\graph.exe
+C:\Users\dmitry\Documents\Volsu\C\4year\lab__8\lab__8_4\graph\graph\obj\Debug\graph.pdb
